@@ -842,6 +842,8 @@ case "$installMode" in
         fi
 		
         if [ $KIT_STATUS -eq 0 ]; then
+            # remove fluentd conf for OMSConsistencyInvoker upon upgrade, if it exists
+            rm -f /etc/opt/microsoft/omsagent/conf/omsagent.d/omsconfig.consistencyinvoker.conf
             /opt/omi/bin/service_control restart
         fi
 
